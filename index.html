@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ezdash</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="hero">
+        <nav>
+            <ul>
+                <li><a href="#">ezdash</a></li>
+                <li><span class="material-icons" id="menuBtn">menu</span></li>
+            </ul>
+        </nav>
+
+        <main class="dashboard">
+
+            <!-- LEFT COLUMN -->
+            <div class="left-col">
+
+                <!-- BALANCE CARD -->
+                <div class="card balance-card">
+                    <p class="label">Total Balance</p>
+                    <h1 class="balance-amount" id="balanceDisplay">Rp 0</h1>
+                    <div class="balance-actions">
+                        <div class="input-group">
+                            <span class="material-icons">account_balance_wallet</span>
+                            <input type="number" id="balanceInput" placeholder="Set balance..." />
+                        </div>
+                        <button class="btn-set" id="setBalanceBtn">Set</button>
+                    </div>
+                </div>
+
+                <!-- ADD EXPENSE -->
+                <div class="card add-card">
+                    <p class="label">Add Expense</p>
+                    <div class="form-row">
+                        <div class="input-group">
+                            <span class="material-icons">edit_note</span>
+                            <input type="text" id="expenseName" placeholder="Expense name..." />
+                        </div>
+                        <div class="input-group">
+                            <span class="material-icons">payments</span>
+                            <input type="number" id="expenseAmount" placeholder="Amount..." />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="select-wrapper">
+                            <span class="material-icons">category</span>
+                            <select id="expenseCategory">
+                                <option value="Food">🍜 Food</option>
+                                <option value="Transport">🚗 Transport</option>
+                                <option value="Shopping">🛍️ Shopping</option>
+                                <option value="Health">💊 Health</option>
+                                <option value="Bills">📄 Bills</option>
+                                <option value="Entertainment">🎮 Entertainment</option>
+                                <option value="Other">📦 Other</option>
+                            </select>
+                        </div>
+                        <button class="btn-add" id="addExpenseBtn">
+                            <span class="material-icons">add</span> Add
+                        </button>
+                    </div>
+                </div>
+
+                <!-- EXPENSE LIST -->
+                <div class="card list-card">
+                    <div class="list-header">
+                        <p class="label">Expense List</p>
+                        <span class="total-spent" id="totalSpent">Spent: Rp 0</span>
+                    </div>
+                    <div class="expense-list" id="expenseList">
+                        <div class="empty-state">
+                            <span class="material-icons">receipt_long</span>
+                            <p>No expenses yet</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- RIGHT COLUMN -->
+            <div class="right-col">
+                <div class="card chart-card">
+                    <p class="label">Spending Breakdown</p>
+                    <div class="chart-wrapper">
+                        <canvas id="pieChart"></canvas>
+                        <div class="chart-center" id="chartCenter">
+                            <span class="chart-center-value">0%</span>
+                            <span class="chart-center-label">used</span>
+                        </div>
+                    </div>
+                    <div class="legend" id="chartLegend">
+                        <p class="legend-empty">Add expenses to see breakdown</p>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

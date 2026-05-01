@@ -1,0 +1,549 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&display=swap');
+
+:root {
+    --green: #38B200;
+    --green-dim: rgba(56, 178, 0, 0.12);
+    --green-glow: rgba(56, 178, 0, 0.3);
+    --bg: #0a0a0a;
+    --card: #141414;
+    --card-border: rgba(56, 178, 0, 0.15);
+    --text: #e3e3e3;
+    --text-dim: #666;
+    --danger: #ff4444;
+    --danger-dim: rgba(255, 68, 68, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--green-dim); border-radius: 2px; }
+
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--bg);
+    padding: 0 5%;
+    overflow: hidden;
+    font-family: 'Sora', sans-serif;
+    color: var(--text);
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(images/logoez.png);
+    background-position: center;
+    background-size: 700px;
+    background-repeat: no-repeat;
+    opacity: 0.03;
+    z-index: 0;
+}
+
+/* Subtle green radial glow top left */
+.hero::after {
+    content: '';
+    position: absolute;
+    top: -200px;
+    left: -200px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(56,178,0,0.08) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hero > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* ─── NAVBAR ─── */
+nav {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--card-border);
+    margin-bottom: 32px;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    width: 100%;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--green);
+    font-family: 'Sora', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.material-icons {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+#menuBtn {
+    color: var(--green);
+    transition: transform 0.3s ease;
+}
+
+#menuBtn:hover {
+    transform: rotate(90deg);
+}
+
+/* ─── DASHBOARD LAYOUT ─── */
+.dashboard {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 20px;
+    padding-bottom: 40px;
+}
+
+.left-col, .right-col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* ─── CARDS ─── */
+.card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 24px;
+    transition: border-color 0.3s ease;
+}
+
+.card:hover {
+    border-color: rgba(56, 178, 0, 0.3);
+}
+
+.label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 16px;
+}
+
+/* ─── BALANCE CARD ─── */
+.balance-card {
+    background: linear-gradient(135deg, #141414 0%, #0f1f0a 100%);
+    border-color: rgba(56, 178, 0, 0.25);
+}
+
+.balance-amount {
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--green);
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 30px rgba(56,178,0,0.3);
+}
+
+.balance-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* ─── INPUT GROUPS ─── */
+.input-group {
+    display: flex;
+    align-items: center;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 0 14px;
+    gap: 10px;
+    flex: 1;
+    transition: border-color 0.2s;
+}
+
+.input-group:focus-within {
+    border-color: var(--green);
+}
+
+.input-group .material-icons {
+    color: var(--text-dim);
+    font-size: 18px;
+    cursor: default;
+}
+
+.input-group input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text);
+    font-family: 'Sora', sans-serif;
+    font-size: 14px;
+    padding: 12px 0;
+    width: 100%;
+}
+
+.input-group input::placeholder {
+    color: var(--text-dim);
+}
+
+/* ─── BUTTONS ─── */
+.btn-set {
+    background: var(--green-dim);
+    border: 1px solid var(--green);
+    color: var(--green);
+    font-family: 'Sora', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.btn-set:hover {
+    background: var(--green);
+    color: #000;
+}
+
+.btn-add {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--green);
+    border: none;
+    color: #000;
+    font-family: 'Sora', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 12px 22px;
+    border-radius: 10px;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.btn-add:hover {
+    background: #44d400;
+    box-shadow: 0 0 20px var(--green-glow);
+    transform: translateY(-1px);
+}
+
+.btn-add .material-icons {
+    font-size: 18px;
+    color: #000;
+}
+
+/* ─── ADD EXPENSE CARD ─── */
+.form-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.form-row:last-child {
+    margin-bottom: 0;
+}
+
+.select-wrapper {
+    display: flex;
+    align-items: center;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 0 14px;
+    gap: 10px;
+    flex: 1;
+    transition: border-color 0.2s;
+}
+
+.select-wrapper:focus-within {
+    border-color: var(--green);
+}
+
+.select-wrapper .material-icons {
+    color: var(--text-dim);
+    font-size: 18px;
+}
+
+.select-wrapper select {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text);
+    font-family: 'Sora', sans-serif;
+    font-size: 14px;
+    padding: 12px 0;
+    width: 100%;
+    cursor: pointer;
+}
+
+.select-wrapper select option {
+    background: #1a1a1a;
+    color: var(--text);
+}
+
+/* ─── EXPENSE LIST ─── */
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.list-header .label {
+    margin-bottom: 0;
+}
+
+.total-spent {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--green);
+    background: var(--green-dim);
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+
+.expense-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 32px;
+    color: var(--text-dim);
+}
+
+.empty-state .material-icons {
+    font-size: 36px;
+    color: var(--text-dim);
+    opacity: 0.4;
+}
+
+.empty-state p {
+    font-size: 13px;
+}
+
+/* ─── EXPENSE ITEM ─── */
+.expense-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 10px;
+    padding: 12px 16px;
+    animation: slideIn 0.3s ease;
+    transition: border-color 0.2s;
+}
+
+.expense-item:hover {
+    border-color: rgba(56,178,0,0.2);
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.expense-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.expense-icon {
+    font-size: 20px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+}
+
+.expense-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.expense-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.expense-category {
+    font-size: 11px;
+    color: var(--text-dim);
+}
+
+.expense-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.expense-amount {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--green);
+}
+
+.btn-delete {
+    background: var(--danger-dim);
+    border: 1px solid transparent;
+    border-radius: 7px;
+    padding: 4px 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.btn-delete:hover {
+    border-color: var(--danger);
+    background: rgba(255,68,68,0.2);
+}
+
+.btn-delete .material-icons {
+    font-size: 16px;
+    color: var(--danger);
+}
+
+/* ─── CHART CARD ─── */
+.chart-card {
+    position: sticky;
+    top: 20px;
+}
+
+.chart-wrapper {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    margin: 0 auto 24px;
+}
+
+#pieChart {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.chart-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    pointer-events: none;
+}
+
+.chart-center-value {
+    display: block;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--green);
+    line-height: 1;
+}
+
+.chart-center-label {
+    display: block;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 4px;
+}
+
+/* ─── LEGEND ─── */
+.legend {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.legend-empty {
+    font-size: 12px;
+    color: var(--text-dim);
+    text-align: center;
+    padding: 8px 0;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+}
+
+.legend-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.legend-name {
+    color: var(--text);
+    font-weight: 500;
+}
+
+.legend-pct {
+    color: var(--text-dim);
+    font-size: 11px;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    .chart-card {
+        position: static;
+    }
+
+    .balance-amount {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero { padding: 0 4%; }
+    .form-row { flex-direction: column; }
+    .balance-actions { flex-direction: column; }
+    .btn-set { width: 100%; }
+}
