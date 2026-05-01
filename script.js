@@ -64,6 +64,7 @@ addExpenseBtn.addEventListener('click', () => {
     if (isNaN(amount) || amount <= 0) return shake(expenseAmount);
 
     expenses.push({ id: Date.now(), name, amount, category: cat });
+    balance = Math.max(0, balance - amount);
     expenseName.value = '';
     expenseAmount.value = '';
     render();
@@ -75,6 +76,8 @@ expenseAmount.addEventListener('keydown', e => {
 
 // ─── DELETE EXPENSE ───────────────────────────────────
 function deleteExpense(id) {
+    const exp = expenses.find(e => e.id === id);
+    if (exp) balance += exp.amount;
     expenses = expenses.filter(e => e.id !== id);
     render();
 }
